@@ -24,8 +24,8 @@ images/
 
 ## Cómo agregar imágenes reales
 
-### 🖼️ Galería (sección "Galería de Proyectos")
-Guarda las fotos con estos nombres **exactos** en la carpeta `galeria/`:
+###  Galería (sección "Galería de Proyectos")
+las fotos con estos nombres **exactos** en la carpeta `galeria/`:
 
 | Archivo              | Qué foto va aquí                          | Categoría      |
 |----------------------|-------------------------------------------|----------------|
@@ -38,8 +38,8 @@ Guarda las fotos con estos nombres **exactos** en la carpeta `galeria/`:
 | `tanques-02.jpg`     | Variedad de tanques (250L a 5,000L)       | Tanques        |
 | `tanques-03.jpg`     | Acople hidráulico / sistema de agua       | Tanques        |
 
-### ⬅️ ➡️ Comparador Antes y Después
-Guarda las fotos en la carpeta `comparacion/`:
+### Comparador Antes y Después
+las fotos en la carpeta `comparacion/`:
 
 | Archivo       | Qué foto va aquí                             |
 |---------------|----------------------------------------------|
