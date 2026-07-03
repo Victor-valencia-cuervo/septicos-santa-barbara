@@ -1,0 +1,114 @@
+/* =====================================================
+   SÉPTICOS SANTA BÁRBARA - Estilos Personalizados
+   =====================================================
+   Didier Cuervo | 313 381 5853
+   ===================================================== */
+
+/* --- Scroll Snapping --- */
+.snap-container {
+    scroll-snap-type: none;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-behavior: smooth;
+    touch-action: pan-y;
+    overscroll-behavior-y: contain;
+}
+
+@media (min-width: 1024px) {
+    .snap-container {
+        scroll-snap-type: y mandatory;
+    }
+}
+
+.snap-section {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* --- Ocultar barra de scroll (mantiene funcionalidad) --- */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* --- Puntos de Navegación Lateral --- */
+.nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(2, 132, 199, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #0284c7;
+    transform: scale(1.4);
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+}
+
+/* --- Comparador Antes y Después deslizable --- */
+.comparison-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.comparison-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.img-before {
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #ffffff;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: #0284c7;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    pointer-events: none;
+}
