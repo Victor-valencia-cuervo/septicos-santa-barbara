@@ -13,9 +13,11 @@ const dots          = document.querySelectorAll('.dot');
 const sections      = document.querySelectorAll('.snap-section');
 
 // Abrir / cerrar menú móvil
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
+if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+}
 
 function toggleMobileMenu() {
     mobileMenu.classList.add('hidden');
@@ -38,20 +40,22 @@ function updateDots(activeId) {
 }
 
 // Detectar sección visible al hacer scroll
-mainContainer.addEventListener('scroll', () => {
-    let currentSectionId = '';
-    const scrollPos = mainContainer.scrollTop + (window.innerHeight / 2);
+if (mainContainer) {
+    mainContainer.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPos = mainContainer.scrollTop + (window.innerHeight / 2);
 
-    sections.forEach(section => {
-        const top    = section.offsetTop;
-        const height = section.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-            currentSectionId = section.getAttribute('id');
-        }
+        sections.forEach(section => {
+            const top    = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + height) {
+                currentSectionId = section.getAttribute('id');
+            }
+        });
+
+        if (currentSectionId) updateDots(currentSectionId);
     });
-
-    if (currentSectionId) updateDots(currentSectionId);
-});
+}
 
 
 // ─── FILTRO DE GALERÍA ────────────────────────────────
@@ -206,4 +210,8 @@ function sendWhatsAppQuote() {
 }
 
 // Ejecutar cálculo inicial al cargar
-window.addEventListener('load', calculateQuote);
+window.addEventListener('load', () => {
+    if (document.getElementById('result-label')) {
+        calculateQuote();
+    }
+});
