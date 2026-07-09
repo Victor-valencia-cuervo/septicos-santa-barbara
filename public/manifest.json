@@ -1,0 +1,37 @@
+{
+  "name": "Sépticos Santa Bárbara",
+  "short_name": "Sépticos SB",
+  "description": "Instalación y mantenimiento de pozos sépticos. Venta de tanques de agua 250–10,000 L. Didier Cuervo · 313 381 5853.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#0284c7",
+  "lang": "es",
+  "dir": "ltr",
+  "categories": ["business", "utilities"],
+  "icons": [
+    { "src": "/assets/images/app/apple-touch-icon.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/images/app/apple-touch-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/images/app/logo.png", "sizes": "any", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cotizar por WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Enviar un mensaje directo a Didier Cuervo",
+      "url": "https://wa.me/573133815853?text=Hola%20Didier%2C%20me%20gustaría%20cotizar%20un%20servicio.",
+      "icons": [{ "src": "/assets/images/app/logo.png", "sizes": "any" }]
+    },
+    {
+      "name": "Llamar Ahora",
+      "short_name": "Llamar",
+      "description": "Llamar directamente al 313 381 5853",
+      "url": "tel:3133815853",
+      "icons": [{ "src": "/assets/images/app/logo.png", "sizes": "any" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

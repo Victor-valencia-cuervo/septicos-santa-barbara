@@ -1,0 +1,5 @@
+# Sépticos Santa Bárbara — Cloudflare Pages
+# Como es una Single Page Application (React Router), todas las rutas
+# deben servir index.html para que el enrutador del lado del cliente
+# se encargue de mostrar la página correcta (incluida la de error 404).
+/*    /index.html   200

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://septicossantabarbara.pages.dev/sitemap.xml
