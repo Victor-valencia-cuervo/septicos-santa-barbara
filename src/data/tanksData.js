@@ -36,7 +36,7 @@ export const TANKS = [
     material: 'Polietileno HDPE',
     lifespan: '+20 años',
     desc: 'Tanque compacto ideal para reserva puntual o como complemento de otro sistema de almacenamiento.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-01.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-01.webp',
     waText: '250 litros',
   },
   {
@@ -50,7 +50,7 @@ export const TANKS = [
     material: 'Polietileno HDPE',
     lifespan: '+20 años',
     desc: 'Solución perfecta para casas pequeñas, con tapa hermética y protección UV.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-02.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-02.webp',
     waText: '500 litros',
   },
   {
@@ -64,7 +64,7 @@ export const TANKS = [
     material: 'Polietileno HDPE',
     lifespan: '+20 años',
     desc: 'El más vendido. Garantiza reserva para 1–2 días en una familia estándar.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-03.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-03.webp',
     waText: '1000 litros',
   },
   {
@@ -78,7 +78,7 @@ export const TANKS = [
     material: 'Polietileno HDPE',
     lifespan: '+20 años',
     desc: 'Gran capacidad para fincas medianas o proyectos con mayor demanda hídrica.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-01.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-01.webp',
     waText: '2000 litros',
   },
   {
@@ -92,7 +92,7 @@ export const TANKS = [
     material: 'Polietileno HDPE reforzado',
     lifespan: '+20 años',
     desc: 'Alta capacidad para uso comercial, con conexiones de gran diámetro.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-02.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-02.webp',
     waText: '5000 litros',
   },
   {
@@ -106,7 +106,7 @@ export const TANKS = [
     material: 'Polietileno HDPE reforzado',
     lifespan: '+20 años',
     desc: 'Máxima capacidad, construcción reforzada para condiciones exigentes.',
-    img: '/assets/images/servicios/tanques-almacenamiento/tanque-03.jpg',
+    img: '/assets/images/servicios/tanques-almacenamiento/tanque-03.webp',
     waText: '10000 litros',
   },
 ]

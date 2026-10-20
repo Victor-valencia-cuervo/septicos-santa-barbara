@@ -34,7 +34,7 @@ export default function ServiceTanques() {
       <ServiceSubNav />
 
       <section className="service-hero relative">
-        <HeroBackground config={HERO_TANQUES} />
+        <HeroBackground config={HERO_TANQUES} bubbles />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 relative z-10">
           <div className="max-w-3xl">
             <div className="hero-animate hero-delay-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sky-200 text-xs sm:text-sm font-semibold tracking-wider mb-6">
@@ -48,7 +48,7 @@ export default function ServiceTanques() {
               Venta e instalación de tanques certificados para hogares, fincas y empresas. Desde 250 hasta 10,000 litros con garantía de fábrica.
             </p>
             <div className="hero-animate hero-delay-4 flex flex-col sm:flex-row gap-4">
-              <a href="#catalogo" className="bg-gradient-to-r from-sky-500 to-brand text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all font-bold text-base flex items-center justify-center gap-2 shadow-lg">
+              <a href="#catalogo" className="btn btn--primary btn--lg">
                 <i className="fa-solid fa-cubes-stacked"></i> Ver Catálogo
               </a>
               <a href="https://wa.me/573133815853?text=Hola%20Didier,%20me%20interesa%20cotizar%20un%20tanque%20de%20almacenamiento%20de%20agua." target="_blank" rel="noopener noreferrer" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl transition font-bold text-base flex items-center justify-center gap-2">
@@ -70,7 +70,7 @@ export default function ServiceTanques() {
         </div>
       </section>
 
-      <section className="bg-slate-900 py-20">
+      <section className="section section--dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="En Movimiento" title="Videos del Proceso" desc="Instalación y distribución de tanques en campo." dark />
           <div className="max-w-5xl mx-auto"><VideoGrid videos={VIDEOS_TANQUES} /></div>
@@ -92,7 +92,7 @@ export default function ServiceTanques() {
             <Reveal>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <img
-                  src="/assets/images/servicios/tanques-almacenamiento/tanque-01.jpg"
+                  src="/assets/images/servicios/tanques-almacenamiento/tanque-01.webp"
                   alt="Tanque de almacenamiento"
                   className="w-full h-80 sm:h-96 object-cover"
                   onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/0284c7/ffffff?text=Tanques+de+Agua' }}
@@ -125,10 +125,10 @@ export default function ServiceTanques() {
             <h2 className="text-3xl sm:text-4xl font-black mb-4">¿Listo para cotizar su tanque?</h2>
             <p className="text-sky-100 font-light text-lg mb-8 leading-relaxed">Cuéntenos su necesidad y capacidad requerida. Le enviamos la cotización por WhatsApp de manera inmediata.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20quiero%20cotizar%20un%20tanque%20de%20almacenamiento%20de%20agua.%20¿Puede%20ayudarme?" target="_blank" rel="noopener noreferrer" className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-2xl transition shadow-xl flex items-center justify-center gap-3 text-lg">
+              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20quiero%20cotizar%20un%20tanque%20de%20almacenamiento%20de%20agua.%20¿Puede%20ayudarme?" target="_blank" rel="noopener noreferrer" className="btn btn--wa btn--lg">
                 <i className="fa-brands fa-whatsapp text-2xl"></i> Cotizar por WhatsApp
               </a>
-              <a href="tel:3133815853" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-4 px-8 rounded-2xl transition flex items-center justify-center gap-3 text-lg">
+              <a href="tel:3133815853" className="btn btn--ghost btn--lg">
                 <i className="fa-solid fa-phone"></i> 313 381 5853
               </a>
             </div>

@@ -65,7 +65,7 @@ export default function ServiceInstalacion() {
       <ServiceSubNav />
 
       <section className="service-hero relative">
-        <HeroBackground config={HERO_INSTALACION} />
+        <HeroBackground config={HERO_INSTALACION} bubbles />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 relative z-10">
           <div className="max-w-3xl">
             <div className="hero-animate hero-delay-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sky-200 text-xs sm:text-sm font-semibold tracking-wider mb-6">
@@ -79,10 +79,10 @@ export default function ServiceInstalacion() {
               Diseñamos e instalamos sistemas sépticos seguros, eficientes y duraderos para viviendas, fincas y proyectos rurales.
             </p>
             <div className="hero-animate hero-delay-4 flex flex-col sm:flex-row gap-4">
-              <a href="#whatsapp-cta" onClick={scrollToCta} className="bg-gradient-to-r from-sky-500 to-brand text-white px-8 py-4 rounded-xl hover:shadow-xl transition-all font-bold text-base flex items-center justify-center gap-2 shadow-lg">
+              <a href="#whatsapp-cta" onClick={scrollToCta} className="btn btn--primary btn--lg">
                 <i className="fa-solid fa-paper-plane"></i> Solicitar Cotización
               </a>
-              <a href="#galeria-servicio" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl transition font-bold text-base flex items-center justify-center gap-2">
+              <a href="#galeria-servicio" className="btn btn--ghost btn--lg">
                 <i className="fa-solid fa-images text-sky-300"></i> Ver Galería
               </a>
             </div>
@@ -105,7 +105,7 @@ export default function ServiceInstalacion() {
             <Reveal>
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-sky-100">
                 <img
-                  src="/assets/images/servicios/instalacion-profesional/instalacion-01.jpg"
+                  src="/assets/images/servicios/instalacion-profesional/instalacion-01.webp"
                   alt="Sistema séptico en instalación"
                   className="w-full h-80 sm:h-96 object-cover"
                   onError={(e) => { e.currentTarget.src = 'https://placehold.co/600x400/0369a1/ffffff?text=Sistema+Séptico' }}
@@ -152,7 +152,7 @@ export default function ServiceInstalacion() {
         </div>
       </section>
 
-      <section className="bg-slate-900 py-20">
+      <section className="section section--dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="En Movimiento" title="Videos del Proceso" desc="Mira cómo trabajamos de la excavación a la entrega." dark />
           <div className="max-w-5xl mx-auto"><VideoGrid videos={VIDEOS_INSTALACION} /></div>
@@ -189,10 +189,10 @@ export default function ServiceInstalacion() {
             <h2 className="text-3xl sm:text-4xl font-black mb-4">¿Necesita instalar un sistema séptico?</h2>
             <p className="text-sky-100 font-light text-lg mb-8 leading-relaxed">Solicite una visita técnica gratuita. Comuníquese por WhatsApp o llámenos para recibir asesoría personalizada y cotización sin compromiso.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20necesito%20una%20instalación%20de%20sistema%20séptico.%20¿Podría%20darme%20información%20y%20una%20cotización?" target="_blank" rel="noopener noreferrer" className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-2xl transition shadow-xl flex items-center justify-center gap-3 text-lg">
+              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20necesito%20una%20instalación%20de%20sistema%20séptico.%20¿Podría%20darme%20información%20y%20una%20cotización?" target="_blank" rel="noopener noreferrer" className="btn btn--wa btn--lg">
                 <i className="fa-brands fa-whatsapp text-2xl"></i> Escribir por WhatsApp
               </a>
-              <a href="tel:3133815853" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-4 px-8 rounded-2xl transition flex items-center justify-center gap-3 text-lg">
+              <a href="tel:3133815853" className="btn btn--ghost btn--lg">
                 <i className="fa-solid fa-phone"></i> 313 381 5853
               </a>
             </div>

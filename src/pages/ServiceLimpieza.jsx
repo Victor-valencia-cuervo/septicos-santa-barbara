@@ -58,7 +58,7 @@ export default function ServiceLimpieza() {
 
       {/* El hero de esta página NUNCA se censura, aunque el resto del contenido sí */}
       <section className="service-hero relative">
-        <HeroBackground config={HERO_LIMPIEZA} />
+        <HeroBackground config={HERO_LIMPIEZA} bubbles />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 relative z-10">
           <div className="max-w-3xl">
             <div className="hero-animate hero-delay-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sky-200 text-xs sm:text-sm font-semibold tracking-wider mb-6">
@@ -75,7 +75,7 @@ export default function ServiceLimpieza() {
               <a href="https://wa.me/573133815853?text=Hola%20Didier,%20necesito%20una%20limpieza%20de%20pozo%20séptico.%20¿Puede%20ayudarme?" target="_blank" rel="noopener noreferrer" className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-xl transition-all font-bold text-base flex items-center justify-center gap-2 shadow-lg">
                 <i className="fa-brands fa-whatsapp text-xl"></i> Solicitar Limpieza
               </a>
-              <a href="#galeria-servicio" className="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/20 px-8 py-4 rounded-xl transition font-bold text-base flex items-center justify-center gap-2">
+              <a href="#galeria-servicio" className="btn btn--ghost btn--lg">
                 <i className="fa-solid fa-images text-sky-300"></i> Ver Galería
               </a>
             </div>
@@ -133,7 +133,7 @@ export default function ServiceLimpieza() {
         </div>
       </section>
 
-      <section className="bg-slate-900 py-20">
+      <section className="section section--dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="En Movimiento" title="Videos del Proceso" desc="Mira cómo realizamos la limpieza completa de un pozo séptico." dark />
           <div className="max-w-5xl mx-auto"><VideoGrid videos={VIDEOS_LIMPIEZA} /></div>
@@ -194,10 +194,10 @@ export default function ServiceLimpieza() {
             <h2 className="text-3xl sm:text-4xl font-black mb-4">¿Necesita mantenimiento urgente?</h2>
             <p className="text-sky-100 font-light text-lg mb-8 leading-relaxed">No espere a que el problema se agrave. Contáctenos ahora por WhatsApp y programamos la limpieza de su pozo séptico a la brevedad.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20necesito%20una%20limpieza%20urgente%20de%20mi%20pozo%20séptico.%20¿Puede%20ayudarme?" target="_blank" rel="noopener noreferrer" className="bg-emerald-600 hover:bg-emerald-500 text-white font-black py-4 px-8 rounded-2xl transition shadow-xl flex items-center justify-center gap-3 text-lg">
+              <a href="https://wa.me/573133815853?text=Hola%20Didier,%20necesito%20una%20limpieza%20urgente%20de%20mi%20pozo%20séptico.%20¿Puede%20ayudarme?" target="_blank" rel="noopener noreferrer" className="btn btn--wa btn--lg">
                 <i className="fa-brands fa-whatsapp text-2xl"></i> Solicitar Mantenimiento
               </a>
-              <a href="tel:3133815853" className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-4 px-8 rounded-2xl transition flex items-center justify-center gap-3 text-lg">
+              <a href="tel:3133815853" className="btn btn--ghost btn--lg">
                 <i className="fa-solid fa-phone"></i> 313 381 5853
               </a>
             </div>

@@ -107,3 +107,16 @@ Ya se configuraron las etiquetas `og:image`, `twitter:image`, `favicon` y el `ma
 ---
 
 *Última actualización: Julio 2026 — Sépticos Santa Bárbara*
+
+---
+
+## 🎨 Rediseño (octubre 2026)
+
+- **Tipografía única**: Plus Jakarta Sans (autoalojada con `@fontsource-variable`, sin pedir Google Fonts).
+- **Modo oscuro** con botón sol/luna en el navbar; recuerda la elección y sigue el tema del sistema. Colores en variables CSS (`src/index.css`, bloque `:root` / `.dark`).
+- **Animación de entrada** (`IntroSplash.jsx`): logo en gota que se llena, nombre letra por letra y cortina. Una vez por sesión, se omite con clic y respeta "reducir movimiento".
+- **Hero nuevo**: título animado palabra por palabra, burbujas, ola inferior, panel de cifras y botones nuevos.
+- **Skeletons** con `react-loading-skeleton` en galería, tanques, lightbox y videos (`SkeletonMedia.jsx`, `VideoGrid.jsx`).
+- **Videos nuevos** (4) optimizados a H.264 (22 MB → 8 MB) con póster `.webp`.
+- **Rendimiento**: scroll normal de la página (sin contenedor con snap), imágenes en `.webp`, páginas de servicio con carga diferida, `framer-motion` en un chunk aparte, Font Awesome sin bloquear el primer pintado.
+- Nuevas dependencias: `framer-motion`, `react-loading-skeleton`, `@fontsource-variable/plus-jakarta-sans`.

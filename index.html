@@ -33,9 +33,10 @@
   <!-- ══ PWA / ICONO EN PANTALLA DE INICIO ══ -->
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#0284c7" />
+  <meta name="color-scheme" content="light dark" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Sépticos SB" />
   <link rel="apple-touch-icon" href="/assets/images/app/apple-touch-icon.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/app/apple-touch-icon.png" />
@@ -78,12 +79,25 @@
   }
   </script>
 
-  <!-- ══ RECURSOS EXTERNOS ══ -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- ══ RECURSOS EXTERNOS (no bloquean el primer pintado) ══ -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" /></noscript>
+
+  <!-- ══ MODO OSCURO: se aplica antes de pintar para evitar el "flash" blanco ══ -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('ssb-theme');
+        var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+        var m = document.querySelector('meta[name="theme-color"]');
+        if (m) m.setAttribute('content', dark ? '#0b1220' : '#0284c7');
+      } catch (e) {}
+    })();
+  </script>
 </head>
-<body class="font-sans antialiased bg-slate-900">
+<body class="font-sans antialiased">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

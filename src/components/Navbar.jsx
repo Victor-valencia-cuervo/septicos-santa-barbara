@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import useScrollSpy from '../hooks/useScrollSpy.js'
+import ThemeToggle from './ThemeToggle.jsx'
+import { scrollToId } from '../lib/scroll.js'
+import { useIntroDone } from './IntroSplash.jsx'
 
 const HOME_LINKS = [
   { id: 'inicio', label: 'Inicio' },
@@ -13,125 +17,135 @@ const HOME_LINKS = [
 
 const SERVICE_LINKS = [
   { to: '/', label: 'Inicio' },
-  { to: '/#servicios', label: 'Servicios' },
   { to: '/servicios/instalacion-profesional', label: 'Instalación' },
   { to: '/servicios/limpieza-mantenimiento', label: 'Limpieza' },
   { to: '/servicios/tanques-almacenamiento', label: 'Tanques' },
 ]
 
-// clase compartida: subrayado permanente si activo, en hover si no
-const underline = (active) =>
-  `relative pb-1 font-semibold text-sm transition-colors ${active ? 'text-brand' : 'text-slate-600 hover:text-brand'} ` +
-  `after:content-[''] after:absolute after:left-0 after:-bottom-0.5 after:h-[2px] after:rounded-full after:bg-brand after:transition-all after:duration-300 ` +
-  (active ? 'after:w-full' : 'after:w-0 hover:after:w-full')
-
 export default function Navbar() {
   const location = useLocation()
   const navigate = useNavigate()
   const isHome = location.pathname === '/'
+  const introDone = useIntroDone()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const activeSection = useScrollSpy(HOME_LINKS.map((l) => l.id))
 
-  const activeSection = useScrollSpy('main-container', HOME_LINKS.map((l) => l.id))
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  useEffect(() => setMobileOpen(false), [location.pathname])
 
-  const scrollToSection = (id) => {
-    if (!isHome) {
-      navigate('/', { state: { scrollTo: id } })
-      return
-    }
-    const section = document.getElementById(id)
-    const container = document.getElementById('main-container')
-    if (section && container) container.scrollTo({ top: section.offsetTop, behavior: 'smooth' })
+  const go = (id) => {
     setMobileOpen(false)
+    if (!isHome) return navigate('/', { state: { scrollTo: id } })
+    scrollToId(id)
   }
 
+  // Transparente sobre el hero de la home; "vidrio" al hacer scroll o en otras páginas
+  const solid = scrolled || !isHome || mobileOpen
+  const onDark = !solid
+  const items = isHome ? HOME_LINKS.map((l) => ({ key: l.id, label: l.label, active: activeSection === l.id, onClick: () => go(l.id) }))
+    : SERVICE_LINKS.map((l) => ({ key: l.to, label: l.label, to: l.to, active: location.pathname === l.to }))
+
+  const linkCls = (active) => `relative px-3.5 py-2 text-sm font-semibold rounded-full transition-colors ${
+    onDark ? (active ? 'text-white' : 'text-white/75 hover:text-white') : (active ? 'text-brand' : 'text-[var(--ink-2)] hover:text-brand')
+  }`
+
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-40 border-b border-sky-100 shadow-sm" role="navigation" aria-label="Menú principal">
+    <motion.nav
+      initial={{ y: -90, opacity: 0 }}
+      animate={introDone ? { y: 0, opacity: 1 } : {}}
+      transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
+      className={`fixed top-0 inset-x-0 z-40 transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 border-b ${
+        solid ? 'bg-white/90 dark:bg-[#0b1220]/90 backdrop-blur-xl border-[var(--line)] shadow-[0_6px_24px_-12px_rgba(2,132,199,.25)]' : 'bg-transparent border-transparent'
+      }`}
+      role="navigation"
+      aria-label="Menú principal"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
-          <button onClick={() => scrollToSection('inicio')} className="flex items-center gap-3 focus:outline-none" aria-label="Ir al inicio">
+          <button onClick={() => go('inicio')} className="flex items-center gap-3 group" aria-label="Ir al inicio">
             <img
               src="/assets/images/app/logo.png"
               alt="Sépticos Santa Bárbara"
-              className="h-10 sm:h-12 w-auto object-contain"
+              width="48" height="48"
+              className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               onError={(e) => { e.currentTarget.src = 'https://placehold.co/60x60/0284c7/ffffff?text=SSB' }}
             />
             <div className="flex flex-col leading-tight text-left">
-              <span className="font-extrabold text-brand text-sm md:text-base tracking-wider uppercase">SÉPTICOS</span>
-              <span className="font-bold text-slate-600 text-[10px] md:text-xs tracking-widest">SANTA BÁRBARA</span>
+              <span className={`font-extrabold text-sm md:text-base tracking-[.14em] uppercase transition-colors ${onDark ? 'text-white' : 'text-brand'}`}>Sépticos</span>
+              <span className={`font-semibold text-[10px] md:text-[11px] tracking-[.3em] transition-colors ${onDark ? 'text-sky-200/80' : 'text-[var(--ink-3)]'}`}>SANTA BÁRBARA</span>
             </div>
           </button>
 
-          <div className="hidden lg:flex space-x-6 items-center">
-            {isHome ? (
-              <>
-                {HOME_LINKS.map((l) => (
-                  <button key={l.id} onClick={() => scrollToSection(l.id)} className={underline(activeSection === l.id)}>
-                    {l.label}
-                  </button>
-                ))}
-              </>
-            ) : (
-              <>
-                {SERVICE_LINKS.map((l) => (
-                  <Link key={l.to} to={l.to} className={underline(location.pathname === l.to)}>
-                    {l.label}
-                  </Link>
-                ))}
-              </>
-            )}
-            <button
-              onClick={() => scrollToSection('contacto')}
-              className="bg-brand text-white px-5 py-2.5 rounded-full hover:bg-brand-dark transition-all shadow-md font-bold text-sm flex items-center gap-2"
-            >
-              <i className="fa-solid fa-phone"></i> Contáctanos
+          <div className="hidden lg:flex items-center gap-1">
+            {items.map((it) => {
+              const inner = (
+                <>
+                  {it.active && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className={`absolute inset-0 rounded-full ${onDark ? 'bg-white/15' : 'bg-brand/10'}`}
+                      transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{it.label}</span>
+                </>
+              )
+              return it.to
+                ? <Link key={it.key} to={it.to} className={linkCls(it.active)}>{inner}</Link>
+                : <button key={it.key} onClick={it.onClick} className={linkCls(it.active)}>{inner}</button>
+            })}
+            <span className="w-2" />
+            <ThemeToggle onDark={onDark} />
+            <button onClick={() => go('contacto')} className="btn btn--primary ml-2 !py-2.5 !px-5 !text-sm">
+              <i className="fa-solid fa-phone text-xs"></i> Contáctanos
             </button>
           </div>
 
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden text-slate-600 hover:text-brand focus:outline-none p-2"
-            aria-label="Abrir menú"
-          >
-            <i className="fa-solid fa-bars text-2xl"></i>
-          </button>
+          <div className="lg:hidden flex items-center gap-1.5">
+            <ThemeToggle onDark={onDark} />
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
+              className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${onDark ? 'text-white hover:bg-white/15' : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)]'}`}
+              aria-label={mobileOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={mobileOpen}
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden="true">{mobileOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}</svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-sky-100 shadow-lg absolute w-full left-0 z-50">
-          <div className="px-4 pt-2 pb-6 space-y-1">
-            {(isHome
-              ? HOME_LINKS.map((l) => ({ label: l.label, onClick: () => scrollToSection(l.id), active: activeSection === l.id }))
-              : SERVICE_LINKS.map((l) => ({ label: l.label, to: l.to, active: location.pathname === l.to }))
-            ).map((item, i) =>
-              item.to ? (
-                <Link
-                  key={i}
-                  to={item.to}
-                  onClick={() => setMobileOpen(false)}
-                  className={`block w-full text-left px-3 py-2 rounded-md font-medium ${item.active ? 'text-brand bg-sky-50' : 'text-slate-700 hover:text-brand hover:bg-sky-50'}`}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={i}
-                  onClick={item.onClick}
-                  className={`block w-full text-left px-3 py-2 rounded-md font-medium ${item.active ? 'text-brand bg-sky-50' : 'text-slate-700 hover:text-brand hover:bg-sky-50'}`}
-                >
-                  {item.label}
-                </button>
-              )
-            )}
-            <button
-              onClick={() => scrollToSection('contacto')}
-              className="block w-full text-center bg-brand text-white py-3 rounded-xl font-bold hover:bg-brand-dark transition shadow-md"
-            >
-              <i className="fa-solid fa-phone mr-1"></i> Contáctanos
-            </button>
-          </div>
-        </div>
-      )}
-    </nav>
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
+            className="lg:hidden overflow-hidden border-t border-[var(--line)]"
+          >
+            <div className="px-4 pt-3 pb-6 space-y-1">
+              {items.map((it, i) => {
+                const cls = `block w-full text-left px-4 py-3 rounded-xl font-semibold transition-colors ${it.active ? 'text-brand bg-brand/10' : 'text-[var(--ink-2)] hover:bg-[var(--surface-2)]'}`
+                return (
+                  <motion.div key={it.key} initial={{ x: -12, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 0.04 * i }}>
+                    {it.to ? <Link to={it.to} className={cls}>{it.label}</Link> : <button onClick={it.onClick} className={cls}>{it.label}</button>}
+                  </motion.div>
+                )
+              })}
+              <button onClick={() => go('contacto')} className="btn btn--primary w-full mt-3">
+                <i className="fa-solid fa-phone"></i> Contáctanos
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
   )
 }

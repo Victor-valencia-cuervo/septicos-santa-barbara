@@ -1,5 +1,6 @@
 import React from 'react'
 import useScrollSpy from '../hooks/useScrollSpy.js'
+import { scrollToId } from '../lib/scroll.js'
 
 const SECTIONS = [
   { id: 'inicio', label: 'Inicio' },
@@ -14,25 +15,11 @@ const SECTIONS = [
 ]
 
 export default function DotsNav() {
-  const active = useScrollSpy('main-container', SECTIONS.map((s) => s.id))
-
-  const goTo = (id) => {
-    const section = document.getElementById(id)
-    const container = document.getElementById('main-container')
-    if (section && container) container.scrollTo({ top: section.offsetTop, behavior: 'smooth' })
-  }
-
+  const active = useScrollSpy(SECTIONS.map((s) => s.id))
   return (
-    <div className="nav-dots hidden md:flex" aria-hidden="true">
+    <div className="nav-dots" role="navigation" aria-label="Secciones">
       {SECTIONS.map((s) => (
-        <button
-          key={s.id}
-          type="button"
-          className={`dot ${active === s.id ? 'active' : ''}`}
-          onClick={() => goTo(s.id)}
-          title={s.label}
-          aria-label={s.label}
-        />
+        <button key={s.id} type="button" className={`dot ${active === s.id ? 'active' : ''}`} onClick={() => scrollToId(s.id)} title={s.label} aria-label={s.label} />
       ))}
     </div>
   )

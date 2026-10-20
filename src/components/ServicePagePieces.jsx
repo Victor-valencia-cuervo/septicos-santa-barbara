@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Reveal from '../hooks/useReveal.jsx'
+import SectionHead from './SectionHead.jsx'
 
 export function RelatedServices({ items }) {
   return (
@@ -32,12 +33,5 @@ export function RelatedServices({ items }) {
 }
 
 export function SectionHeader({ eyebrow, title, desc, dark = false }) {
-  return (
-    <div className="text-center mb-12">
-      <Reveal as="span" className="text-brand font-bold tracking-widest uppercase text-sm block">{eyebrow}</Reveal>
-      <Reveal as="h2" className={`text-3xl sm:text-4xl font-extrabold mt-2 ${dark ? 'text-white' : 'text-slate-900'}`}>{title}</Reveal>
-      <div className="w-24 h-1.5 bg-brand mx-auto mt-3 rounded-full"></div>
-      {desc && <Reveal as="p" className={`font-light mt-3 max-w-xl mx-auto text-sm ${dark ? 'text-slate-400' : 'text-slate-500'}`}>{desc}</Reveal>}
-    </div>
-  )
+  return <SectionHead eyebrow={eyebrow} title={title} desc={desc} light={dark} />
 }

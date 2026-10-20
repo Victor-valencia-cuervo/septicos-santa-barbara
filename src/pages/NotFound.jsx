@@ -11,7 +11,7 @@ export default function NotFound() {
         className="min-h-screen flex items-center justify-center p-4"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(15,23,42,.88), rgba(15,23,42,.95)), url('https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+            "radial-gradient(90% 70% at 50% 0%, #0b3a63 0%, #07182c 55%, #050d1a 100%)",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

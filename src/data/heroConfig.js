@@ -16,28 +16,28 @@
 
 export const HERO_INICIO = {
   type: 'image', // 'image' | 'video'
-  src: '/assets/images/inicio/hero/hero-bg.jpg',
-  poster: '/assets/images/inicio/hero/hero-bg.jpg',
-  gradient: 'linear-gradient(to right, rgba(15,23,42,.9), rgba(15,23,42,.75))',
+  src: '/assets/images/inicio/hero/hero-bg.webp',
+  poster: '/assets/images/inicio/hero/hero-bg.webp',
+  gradient: 'linear-gradient(105deg, rgba(5,13,26,.94) 0%, rgba(7,32,58,.8) 48%, rgba(2,100,160,.38) 100%)',
 }
 
 export const HERO_INSTALACION = {
   type: 'image',
-  src: '/assets/images/servicios/instalacion-profesional/hero.jpg',
-  poster: '/assets/images/servicios/instalacion-profesional/hero.jpg',
+  src: '/assets/images/servicios/instalacion-profesional/hero.webp',
+  poster: '/assets/images/servicios/instalacion-profesional/hero.webp',
   gradient: 'linear-gradient(to right, rgba(15,23,42,.92), rgba(2,132,199,.55))',
 }
 
 export const HERO_LIMPIEZA = {
   type: 'image',
-  src: '/assets/images/servicios/limpieza-mantenimiento/hero.jpg',
-  poster: '/assets/images/servicios/limpieza-mantenimiento/hero.jpg',
+  src: '/assets/images/servicios/limpieza-mantenimiento/hero.webp',
+  poster: '/assets/images/servicios/limpieza-mantenimiento/hero.webp',
   gradient: 'linear-gradient(to right, rgba(15,23,42,.92), rgba(3,105,161,.6))',
 }
 
 export const HERO_TANQUES = {
   type: 'image',
-  src: '/assets/images/servicios/tanques-almacenamiento/hero.jpg',
-  poster: '/assets/images/servicios/tanques-almacenamiento/hero.jpg',
+  src: '/assets/images/servicios/tanques-almacenamiento/hero.webp',
+  poster: '/assets/images/servicios/tanques-almacenamiento/hero.webp',
   gradient: 'linear-gradient(to right, rgba(15,23,42,.92), rgba(7,89,133,.6))',
 }
